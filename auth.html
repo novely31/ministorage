@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login & Signup</title>
+<link rel="stylesheet" href="auth.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="auth-page">
+    
+    <div class="container">
+        
+        <div id="signupBox" class="box">
+            <h2>Create Account</h2>
+
+            <div class="input-group">
+                <span class="input-icon"><i class="fas fa-user"></i></span>
+                <input type="text" id="signupName" placeholder="Full Name">
+            </div>
+            <div class="error-message" id="error-signupName"></div>
+
+            <div class="input-group">
+                <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                <input type="email" id="signupEmail" placeholder="Email">
+            </div>
+            <div class="error-message" id="error-signupEmail"></div>
+
+            <div class="input-group password-wrap">
+                <span class="input-icon"><i class="fas fa-lock"></i></span>
+                <input type="password" id="signupPassword" placeholder="Password (min 6 characters)">
+                <span class="toggle" onclick="togglePassword('signupPassword', this)"><i class="fas fa-eye"></i></span>
+            </div>
+            <div class="error-message" id="error-signupPassword"></div>
+
+            <button onclick="signupUser()">Sign Up</button>
+
+            <button class="google-btn" onclick="googleSignup()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
+                Continue with Google
+            </button>
+
+            <p>Already have an account?  
+                <span class="link" onclick="showLogin()">Login</span>
+            </p>
+        </div>
+
+        <div id="loginBox" class="box hidden">
+            <h2>Login</h2>
+
+            <div class="input-group">
+                <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                <input type="email" id="loginEmail" placeholder="Email">
+            </div>
+            <div class="error-message" id="error-loginEmail"></div>
+
+            <div class="input-group password-wrap">
+                <span class="input-icon"><i class="fas fa-lock"></i></span>
+                <input type="password" id="loginPassword" placeholder="Password">
+                <span class="toggle" onclick="togglePassword('loginPassword', this)"><i class="fas fa-eye"></i></span>
+            </div>
+            <div class="error-message" id="error-loginPassword"></div>
+
+            <button onclick="loginUser()">Login</button>
+
+            <button class="google-btn" onclick="googleSignup()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
+                Continue with Google
+            </button>
+
+            <p>Don’t have an account?  
+                <span class="link" onclick="showSignup()">Create One</span>
+            </p>
+        </div>
+
+    </div>
+    
+    <div class="promo-side">
+        <div class="promo-content">
+            <i class="fas fa-cloud-upload-alt promo-icon"></i>
+            <h2>Securely Store & Share</h2>
+            <p>Access your files instantly from any device. Sign up now and join MiniDrive.</p>
+        </div>
+        
+    </div>
+
+</div>
+
+<script type="module" src="main.js"></script>
+<script>
+// These functions must be defined locally to handle form switching:
+window.showLogin = function() {
+    document.getElementById('signupBox').classList.add('hidden');
+    document.getElementById('loginBox').classList.remove('hidden');
+    // Clear any hash in the URL to prevent reloading/re-switching
+    history.pushState(null, '', 'auth.html'); 
+};
+
+window.showSignup = function() {
+    document.getElementById('loginBox').classList.add('hidden');
+    document.getElementById('signupBox').classList.remove('hidden');
+    // Clear any hash in the URL
+    history.pushState(null, '', 'auth.html'); 
+};
+
+window.togglePassword = function(id, element) {
+    const input = document.getElementById(id);
+    const icon = element.querySelector('i');
+    
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+};
+
+// Check URL hash on load to determine which box to show (e.g. from index.html link)
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash === '#loginBox') {
+        showLogin();
+    } else {
+        showSignup();
+    }
+});
+</script>
+
+</body>
+</html>

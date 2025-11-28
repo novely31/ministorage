@@ -1,0 +1,189 @@
+body {
+  /* Removed existing centering styles */
+  margin: 0;
+  padding: 0;
+  background: #f0f4f8; /* Lighter, modern background */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333;
+}
+
+/* --- Two-Column Layout Container --- */
+.auth-page {
+    display: grid;
+    /* 40% width for the form, 60% for the promotion */
+    grid-template-columns: 2fr 3fr; 
+    height: 100vh; /* Take full viewport height */
+}
+
+/* LEFT SIDE: Forms Container Styling */
+.container {
+  /* Center the form content within its column */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.box {
+  width: 350px; /* Max width for the form box */
+  background: white;
+  padding: 30px; 
+  border-radius: 12px; 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+}
+
+/* RIGHT SIDE: Promotional Side Styling */
+.promo-side {
+    background: #1e3a8a; /* Dark blue background, matching the dashboard nav */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    text-align: center;
+}
+
+.promo-content {
+    max-width: 400px;
+}
+
+.promo-icon {
+    font-size: 4em;
+    color: #10b981; /* Green accent */
+    margin-bottom: 20px;
+}
+
+.promo-side h2 {
+    color: white;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.promo-side p {
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1e3a8a; 
+  font-weight: 600;
+}
+
+.hidden { display: none; }
+
+/* --- Input Group Styling for Icons --- */
+.input-group {
+    position: relative;
+    margin-bottom: 15px; /* Increased margin */
+}
+
+input {
+  width: 100%;
+  padding: 12px 12px 12px 40px; /* Adjusted padding for icon */
+  box-sizing: border-box; /* Crucial for padding to be inside width */
+  margin: 0; /* Removed default margin */
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 16px;
+}
+
+.password-wrap .toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #9ca3af;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px; 
+  background: #3b82f6; 
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover {
+  background: #2563eb; 
+}
+
+.google-btn {
+  background: #ffffff;
+  color: #444;
+  border: 1px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-btn img {
+  width: 18px;
+  margin-right: 10px;
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95em;
+}
+
+.link {
+  color: #3b82f6;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.9em;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    min-height: 1.2em;
+}
+
+/* --- Responsive adjustments for mobile --- */
+@media (max-width: 768px) {
+    .auth-page {
+        grid-template-columns: 1fr; /* Single column layout */
+        height: auto;
+        min-height: 100vh;
+    }
+    .promo-side {
+        display: none; /* Hide the promotional side on small screens */
+    }
+    .container {
+        padding: 20px;
+    }
+    .box {
+        width: 100%;
+        box-shadow: none;
+    }
+}
